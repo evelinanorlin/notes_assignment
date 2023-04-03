@@ -1,4 +1,7 @@
+import { renderNotes } from "./showNotes.js";
+
 const loginContainer = document.getElementById('login');
+let notesContainer = document.getElementById('notes');
 
 export function renderLogin(){
   let loggedInUser = localStorage.getItem('username');
@@ -6,6 +9,7 @@ export function renderLogin(){
   if(loggedInUser){
     renderLoggedin()
   } else{
+    notesContainer.innerHTML = ``;
     loginContainer.innerHTML = `
     <h2>Log in<h2>
     <form>
@@ -28,6 +32,7 @@ export function renderLogin(){
               //visa inlägg
               localStorage.setItem('username', user.username)
               renderLoggedin()
+              renderNotes()
             } else{
               alert('wrong password')
             }

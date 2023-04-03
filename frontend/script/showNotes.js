@@ -1,4 +1,5 @@
 import { addNote } from "./addNotes.js"
+import { editNote } from "./editNote.js";
 
 let notesContainer = document.getElementById('notes');
 
@@ -49,6 +50,9 @@ function renderNote(noteId){
           </div>
         `
         document.getElementById('backBtn').addEventListener('click', renderNotes)
+        document.getElementById('editBtn').addEventListener('click', () => {
+          editNote(noteId)
+        })
       }
     })
   })
