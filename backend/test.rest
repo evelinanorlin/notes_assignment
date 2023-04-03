@@ -1,0 +1,37 @@
+//USERS
+
+POST http://localhost:3000/users/add
+Content-Type: application/json
+
+{
+  "email": "evelina@mail.com",
+  "password": "password",
+  "username": "Evelina Norlin"
+}
+
+###
+
+GET http://localhost:3000/users/
+
+###
+
+// NOTES
+
+    # let title = req.body.title;
+    # let description = req.body.description;
+    # let content = req.body.content;
+    # let author = req.body.author;
+
+POST http://localhost:3000/notes/add
+Content-Type: application/json
+
+{
+  "title": "test 2",
+  "description": "<p>A test 3</p>",
+  "content": "<h3>A test 3</h3><p>A test</p>",
+  "author": "Evelina Norlin"
+}
+
+###
+
+GET http://localhost:3000/notes/

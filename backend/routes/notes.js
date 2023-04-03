@@ -9,9 +9,9 @@ router.get('/',  function(req, res){
       console.log(err)
     }
 
-    let users = `SELECT * FROM users`
+    let notes = `SELECT * FROM notes`
 
-    req.app.locals.con.query(users, function(err, result){
+    req.app.locals.con.query(notes, function(err, result){
       if(err){
         console.log(err)
       }
@@ -28,11 +28,13 @@ router.post('/add', function(req, res){
     }
     console.log(req.body)
 
-    let email = req.body.email;
-    let password = req.body.password;
-    let username = req.body.username;
+    let title = req.body.title;
+    let description = req.body.description;
+    let content = req.body.content;
+    let author = req.body.author;
 
-    let sql = `INSERT INTO users (email, password, username) VALUES ("${email}", "${password}", "${username}")`
+
+    let sql = `INSERT INTO notes (title, description, content, author) VALUES ("${title}", "${description}", "${content}", "${author}")`
 
     req.app.locals.con.query(sql, function(err, result){
       if(err){
