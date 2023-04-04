@@ -46,4 +46,31 @@ router.post('/add', function(req, res){
   })
 })
 
+router.put('/edit', function(req, res){
+  req.app.locals.con.connect(function(err){
+    if(err){
+      console.log(err)
+    }
+    console.log(req.body)
+
+    let id = req.body.id
+    let title = req.body.title;
+    let description = req.body.description;
+    let content = req.body.content;
+    let author = req.body.author;
+
+
+    let sql = `UPDATE notes SET title = "${title}", description = "${description}", content = "${content}", author="${author}" WHERE id="${id}"`
+
+    req.app.locals.con.query(sql, function(err, result){
+      
+      if(err){
+        console.log(err)
+      }
+      console.log('result', result);
+      res.send({message: result})
+    })
+  })
+})
+
 module.exports = router;

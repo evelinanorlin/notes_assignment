@@ -35,3 +35,15 @@ Content-Type: application/json
 ###
 
 GET http://localhost:3000/notes/
+
+###
+PUT http://localhost:3000/notes/edit
+Content-Type: application/json
+
+{
+  "id": 1,
+  "title": "An edited post",
+  "description": "edited",
+  "content": "<h3>edited</h3><p>edited</p>",
+  "author": "Evelina Norlin"
+}
