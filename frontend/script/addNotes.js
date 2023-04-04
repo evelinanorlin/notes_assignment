@@ -14,8 +14,11 @@ export function addNote(){
     <button id="postBtn" type="button">Post note</button>
   </form>`
   
+  tinymce.remove();
   tinymce.init({
     selector: '#mytextarea',
+    menubar: false,
+    toolbar: 'undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | backcolor forecolor',
     setup: (editor) => {
       editor.on('change', () => {
       const contentValue = editor.getContent();
@@ -52,7 +55,7 @@ export function addNote(){
         notesContainer.innerHTML = `
         <h3>The note is published!</h3>
         <button id="backBtn">Back to notes</button>`
-        
+
         document.getElementById('backBtn').addEventListener('click', renderNotes)
       })
   })

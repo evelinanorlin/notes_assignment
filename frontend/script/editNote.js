@@ -18,7 +18,8 @@ export function editNote(noteId){
           <textarea id="mytextarea">${data.content}</textarea>
           <button id="saveBtn">save changes</button>
           `;
-
+          
+          tinymce.remove();
           tinymce.init({
             selector: '#mytextarea',
             setup: (editor) => {
