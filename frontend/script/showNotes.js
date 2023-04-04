@@ -5,7 +5,9 @@ let notesContainer = document.getElementById('notes');
 
 export function renderNotes(){
   notesContainer.innerHTML = `
-  <h2>Notes</h2><div class="notes">`
+  <button id="addBtn">Add note</button>
+  <h2>Your notes</h2>
+  <div class="notesflex">`
 
   fetch('http://localhost:3000/notes/')
     .then(res => res.json())
@@ -13,13 +15,15 @@ export function renderNotes(){
       data.map(data => {
         if(data.isdeleted == 0){
           notesContainer.innerHTML += `
-          <h3>${data.title}</h3>
-          ${data.description}
-          <button class="readMoreBtn" id="${data.id}">Open note</button>`; 
+          <div class="note">
+            <h3>${data.title}</h3>
+            ${data.description} <br>
+            <button class="readMoreBtn" id="${data.id}">Open note</button>
+          </div>`; 
         }
       })
 
-      notesContainer.innerHTML += `</div><button id="addBtn">Add note</button>`
+      notesContainer.innerHTML += `</div>`
       document.getElementById('addBtn').addEventListener('click', addNote)
       let openBtns = document.querySelectorAll('.readMoreBtn')
 
@@ -31,7 +35,7 @@ export function renderNotes(){
   })
 }
 
-function renderNote(noteId){
+export function renderNote(noteId){
   fetch('http://localhost:3000/notes/')
     .then(res => res.json())
     .then(data => {
@@ -40,7 +44,7 @@ function renderNote(noteId){
         if(data.id == noteId){
           notesContainer.innerHTML = `
           <button id="backBtn">Back to notes</button>
-          <div>
+          <div class="opennote">
             <h2>${data.title}</h2>
             ${data.content}
             <p>by: ${data.author}</p>
@@ -96,5 +100,4 @@ function deleteNote(noteId){
         document.getElementById('backBtn').addEventListener('click', renderNotes)
       })
   })
-
 }

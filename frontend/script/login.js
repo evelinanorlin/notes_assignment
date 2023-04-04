@@ -29,7 +29,6 @@ export function renderLogin(){
         data.map(user => {
           if(user.email == emailInput.value){
             if(user.password == passwordInput.value){
-              //visa inlägg
               localStorage.setItem('username', user.username)
               renderLoggedin()
               renderNotes()

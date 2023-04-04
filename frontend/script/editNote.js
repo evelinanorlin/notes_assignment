@@ -1,4 +1,5 @@
 import { renderNotes } from "./showNotes.js";
+import { renderNote } from "./showNotes.js";
 
 let notesContainer = document.getElementById('notes');
 
@@ -11,10 +12,10 @@ export function editNote(noteId){
           notesContainer.innerHTML = `
           <button id="backBtn">Go back</button>
           <h2>Edit "${data.title}"</h2>
-          <label for="titleinput">Title:</label>
-          <input type="text" name="titleinput" value="${data.title}" id="titleInput">
-          <label for="descriptioninput">Description:</label>
-          <input type="text" name="descriptioninput" value="${data.description}" id="descInput">
+          <label for="titleinput">Title:</label><br>
+          <input class="editInput" type="text" name="titleinput" value="${data.title}" id="titleInput"><br>
+          <label for="descriptioninput">Description:</label><br>
+          <input class="editInput" type="text" name="descriptioninput" value="${data.description}" id="descInput">
           <textarea id="mytextarea">${data.content}</textarea>
           <button id="saveBtn">save changes</button>
           `;
@@ -22,6 +23,8 @@ export function editNote(noteId){
           tinymce.remove();
           tinymce.init({
             selector: '#mytextarea',
+            menubar: false,
+            toolbar: 'undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | backcolor forecolor',
             setup: (editor) => {
               editor.on('change', () => {
               const contentValue = editor.getContent();
@@ -29,9 +32,13 @@ export function editNote(noteId){
               mytextarea.value = contentValue;
             });
           }
-        })
+        });
         const titleInput = document.getElementById('titleInput');
         const descInput = document.getElementById('descInput');
+
+        document.getElementById('backBtn').addEventListener('click', () => {
+          renderNote(noteId)
+        })
         
         document.getElementById('saveBtn').addEventListener('click', () => {
           let author = localStorage.getItem('username')
