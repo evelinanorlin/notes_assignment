@@ -31,7 +31,6 @@ export function renderLogin(){
             if(user.password == passwordInput.value){
               localStorage.setItem('username', user.username)
               renderLoggedin()
-              renderNotes()
             } else{
               alert('wrong password')
             }
@@ -49,8 +48,9 @@ function renderLoggedin(){
   loginContainer.innerHTML = `
   <h2>Welcome ${loggedInUser}</h2>
   <button id="logOutBtn">Log out</button>`
-
   document.getElementById('logOutBtn').addEventListener('click', logout)
+  notesContainer.innerHTML = ``;
+  renderNotes()
 }
 
 function logout(){
