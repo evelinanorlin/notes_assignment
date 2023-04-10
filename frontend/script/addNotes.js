@@ -8,8 +8,10 @@ export function addNote(){
   <button id='backBtn'>Back to notes</button>
   <h2>Add a note</h2>
   <form>
-    <input id="titleInput" placeholder="title" required>
-    <input id="descriptionInput" placeholder="short description">
+    <label for="titleInput">Title</label><br>
+    <input id="titleInput" name="titleInput" placeholder="title" required><br>
+    <label for="descriptionInput">Short description</label><br>
+    <input id="descriptionInput" name="descriptionInput" placeholder="short description">
     <textarea id="mytextarea"></textarea>
     <button id="postBtn" type="button">Post note</button>
   </form>`
@@ -18,7 +20,7 @@ export function addNote(){
   tinymce.init({
     selector: '#mytextarea',
     menubar: false,
-    toolbar: 'undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | backcolor forecolor',
+    toolbar: 'undo redo | styles | bold italic | alignleft aligncenter alignright alignjustify | backcolor forecolor',
     setup: (editor) => {
       editor.on('change', () => {
       const contentValue = editor.getContent();

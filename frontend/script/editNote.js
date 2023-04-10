@@ -24,7 +24,7 @@ export function editNote(noteId){
           tinymce.init({
             selector: '#mytextarea',
             menubar: false,
-            toolbar: 'undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | backcolor forecolor',
+            toolbar: 'undo redo | styles | bold italic | alignleft aligncenter alignright alignjustify | backcolor forecolor',
             setup: (editor) => {
               editor.on('change', () => {
               const contentValue = editor.getContent();
