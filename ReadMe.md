@@ -4,3 +4,9 @@ Gå in i backend-mappen och kör nodemon start för att starta projektet.
 
 I sql-filerna finns användare och inlägg som kan köras i projektet. Har hittas även databas-strukturen.
 För att snabbt lägga in data i databasen finns en REST-fil med alla endpoints.
+
+Användarnamn databas: notes
+Lösenord databas: notes
+
+Användarnamn i appen: evelina@mail.com
+lösenord i appen: password
